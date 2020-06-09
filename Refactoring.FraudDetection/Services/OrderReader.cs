@@ -1,5 +1,6 @@
 ﻿using Refactoring.FraudDetection.Factory;
 using Refactoring.FraudDetection.Models;
+using Refactoring.FraudDetection.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;

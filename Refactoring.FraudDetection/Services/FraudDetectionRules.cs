@@ -1,11 +1,12 @@
 ﻿using Refactoring.FraudDetection.Models;
+using Refactoring.FraudDetection.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Refactoring.FraudDetection.Services
 {
-    public class FraudDetectionRules
+    public class FraudDetectionRules : IFraudDetection
     {
         public bool IsFraudulentOrder(Order baseOrder, Order currentOrder)
         {

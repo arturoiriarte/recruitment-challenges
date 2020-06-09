@@ -27,7 +27,7 @@ namespace PayvisionConsoleApp
             FraudService fraudService = new FraudService();
 
             FraudRadar fraudRadar = new FraudRadar(reader, fraudService);
-            fraudRadar.Check(fs);
+            var result = fraudRadar.Check(fs);
 
         }
     }

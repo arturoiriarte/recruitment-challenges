@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace Refactoring.FraudDetection.Services
+namespace Refactoring.FraudDetection.Services.Interfaces
 {
     public interface IOrderFileReader
     {

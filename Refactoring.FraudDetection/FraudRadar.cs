@@ -6,6 +6,7 @@ namespace Refactoring.FraudDetection
 {
     using Refactoring.FraudDetection.Models;
     using Refactoring.FraudDetection.Services;
+    using Refactoring.FraudDetection.Services.Interfaces;
     using System;
     using System.Collections.Generic;
     using System.IO;
