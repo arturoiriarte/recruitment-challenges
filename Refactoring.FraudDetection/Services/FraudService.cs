@@ -6,8 +6,20 @@ using System.Text;
 
 namespace Refactoring.FraudDetection.Services
 {
-    public class FraudService : FraudDetectionRules, IFraudService
+    public class FraudService : IFraudService
     {
+        IFraudDetection fraudDetection;
+        public FraudService()
+        {
+            this.fraudDetection = new FraudDetectionRules();
+        }
+
+        //if yo want to extend this apply different detection rules
+        public FraudService(IFraudDetection fraudDetection)
+        {
+            this.fraudDetection = fraudDetection;
+        }
+
         public IEnumerable<FraudResult> GetFrauds(List<Order> orders)
         {
             var fraudResults = new List<FraudResult>();
@@ -19,7 +31,7 @@ namespace Refactoring.FraudDetection.Services
                 for (int j = i + 1; j < orders.Count; j++)
                 {
                     var currentOrder = orders[j];
-                    var isFraudulent = IsFraudulentOrder(baseOrder, currentOrder);
+                    var isFraudulent = fraudDetection.IsFraudulentOrder(baseOrder, currentOrder);
 
                     if (isFraudulent)
                     {
