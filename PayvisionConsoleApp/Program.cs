@@ -24,7 +24,9 @@ namespace PayvisionConsoleApp
 
             NormalizeOrder normalizeRule = new NormalizeOrder();
             OrderReader reader = new OrderReader(new BuildOrder(normalizeRule));
-            FraudRadar fraudRadar = new FraudRadar(reader);
+            FraudService fraudService = new FraudService();
+
+            FraudRadar fraudRadar = new FraudRadar(reader, fraudService);
             fraudRadar.Check(fs);
 
         }
