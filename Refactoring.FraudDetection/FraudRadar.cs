@@ -4,12 +4,27 @@
 
 namespace Refactoring.FraudDetection
 {
+    using Refactoring.FraudDetection.Models;
+    using Refactoring.FraudDetection.Services;
     using System;
     using System.Collections.Generic;
     using System.IO;
 
     public class FraudRadar
     {
+        IOrderFileReader reader;
+        public FraudRadar(IOrderFileReader reader)
+        {
+            this.reader = reader;
+        }
+
+        public IEnumerable<FraudResult> Check(FileStream fileStream)
+        {
+            IEnumerable<Order> orders = reader.Read(fileStream);
+
+            return null;
+        }
+
         public IEnumerable<FraudResult> Check(string filePath)
         {
             // READ FRAUD LINES
@@ -91,32 +106,6 @@ namespace Refactoring.FraudDetection
             }
 
             return fraudResults;
-        }
-
-        public class FraudResult
-        {
-            public int OrderId { get; set; }
-
-            public bool IsFraudulent { get; set; }
-        }
-
-        public class Order
-        {
-            public int OrderId { get; set; }
-
-            public int DealId { get; set; }
-
-            public string Email { get; set; }
-
-            public string Street { get; set; }
-
-            public string City { get; set; }
-
-            public string State { get; set; }
-
-            public string ZipCode { get; set; }
-
-            public string CreditCard { get; set; }
         }
     }
 }
